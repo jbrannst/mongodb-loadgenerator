@@ -10,3 +10,5 @@ sudo yum install nodejs
 npm install
 npm run start
 ```
+The POCDriver load generator could also be interesting. It has more configuration options, whereas this one is easy to understand and modify directly.
+https://github.com/johnlpage/POCDriver
