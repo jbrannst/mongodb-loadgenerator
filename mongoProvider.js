@@ -1,6 +1,6 @@
 const mongo = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017";
-//const url = "mongodb+srv://main_user:test123@azure1.em4dc.mongodb.net/test?retryWrites=true";
+//const url = "mongodb+srv://user:password@cluster.mongodb.net/test?retryWrites=true";
 const database = 'test';
 
 let db = null;
