@@ -4,23 +4,34 @@ const getSmallObject = require('./objectProvider').getSmallObject;
 const getBigObject = require('./objectProvider').getBigObject;
 const _ = require('lodash');
 
-const batchSize = 10000;
+const msPerYear = 31536000000;
+const batchSize = 1000;
 async function generateCollection(size, collectionName, objGenerator, withTrajectoryLog) {
+    seedDate = new Date();
+    seedDate.setMilliseconds(seedDate.getMilliseconds() - msPerYear);
+    dateStepMs = msPerYear / size;
     let i = 0;
+    startup_timer = new Date();
+    i = await mongoProvider.countAll(collectionName);
+    console.log('Starting at: ' + i + ' date ' + new Date(+seedDate + i * dateStepMs) + '. Startup took ' + ((new Date() - startup_timer)/1000) + ' s');
     logfilename = collectionName + '_' + (new Date()).getTime();
     while (i < size) {
         let start = new Date()
-        let objs = _.map(new Array(batchSize), objGenerator);
+        let objs = new Array(batchSize);
+        for (let index = 0; index < batchSize; index++) {
+            new_date = new Date(+seedDate + (i + index) * dateStepMs)
+            objs[index] = objGenerator(new_date);
+        }
         console.log('Generation took: ' + (new Date() - start));
         let mongoStart = new Date();
         let res = await mongoProvider.insertMany(objs, collectionName);
         let timeElapsed = new Date() - mongoStart;
         i = i + batchSize;
-        console.log('Batch for collection ' + collectionName + ' of: ' + size + ' at: ' + i + ', inserts completed in:' + timeElapsed + ' ms')
+        console.log('Batch for collection ' + collectionName + ' of: ' + batchSize + ' at: ' + i + ', inserts completed in:' + timeElapsed + ' ms')
         if(withTrajectoryLog) {
             let trajectory = {timestamp: (new Date()).toISOString(), batchSize: batchSize, recordCount: i, timeElapsed: timeElapsed};
             // optional! comment out if it might interfere with your test, for example if you have a small batch size
-            await mongoProvider.insert(trajectory, logfilename)  
+            await mongoProvider.insert(trajectory, collectionName + '_log')  
             trajectoryLogger.saveToFile(logfilename, trajectory);
         }
     }
@@ -72,8 +83,8 @@ module.exports.generateStandardCollectionsForSmallObj = async function() {
 
 module.exports.generateStandardCollectionsForBigObj = async function() {
     var indexSet1 =         [
-        {name: 'ind1', key: {driverId: 1}}, 
-        {name: 'ind2', key: {date: 1, siteId: 1}}
+        {name: 'ind1', key: {date: 1}, options: { unique: true}}, 
+        {name: 'ind2', key: {date: 1, siteId: 1, driverId:1}}
     ];
     // var indexSet2 =         [
     //     {name: 'ind1', key: {driverId: 1}}, 
@@ -109,8 +120,8 @@ module.exports.generateStandardCollectionsForBigObj = async function() {
     //await mongoProvider.createIndexes(indexSet2, 'bigObj50million5indexes');
     //await generateCollection(50000000, 'bigObj50million5indexes', getBigObject, true);
 
-    await mongoProvider.drop('bigObj100k5indexes');
-    await mongoProvider.createIndexes(indexSet2, 'bigObj100k5indexes');
-    await generateCollection(100000, 'bigObj100k5indexes', getBigObject, true);
+    //await mongoProvider.drop('bigObj100k5indexes');
+    //await mongoProvider.createIndexes(indexSet1, 'readings');
+    await generateCollection(1000000, 'readings', getBigObject, false);
 
 }

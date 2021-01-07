@@ -18,13 +18,13 @@ function getSmallObject() {
 }
 module.exports.getSmallObject = getSmallObject;
 
-const smallObjectList = new Array(10).fill(null)
+const smallObjectList = new Array(40).fill(null)
 .map(e => getSmallObject())
 
-function getBigObject() {
+function getBigObject(date) {
     return {
         siteId: faker.random.number({min: 1, max: 50000}),
-        date: faker.date.between('2019-01-01', '2019-12-31'),
+        date: date,
         machineId: faker.random.number({min: 1, max: 200000}),
         driverId: faker.random.number({min: 1, max: 50000}),
         address: {
@@ -40,3 +40,4 @@ function getBigObject() {
 }
 
 module.exports.getBigObject = getBigObject;
+
