@@ -1,0 +1,245 @@
+{
+  "platformVehicleIdentifier": "3CDFE34E4DEB0A6099F84F90EF7DDA40",
+  "platformDriverIdentifier": "0676322DD25E405791B38473A9389ED2",
+  "platformDriveSessionIdentifier": "D49CD166BCF04ECAB7DD228B7B938BCA",
+  "platformFleetOrganizationIdentifiers": [
+    "D0118E18D61448FEA4B811760FACCBC6",
+    "FD35359178494609B670DAF80BF79A14"
+  ],
+  "vin": "Z00SC0000HQ000119",
+  "chassisSeries": "SCAR",
+  "chassisNumber": "000119",
+  "labels": [
+    "D0118E18D61448FEA4B811760FACCBC6",
+    "FD35359178494609B670DAF80BF79A14"
+  ],
+  "fleetOrganizationTimeZones": [
+    {
+      "fleetOrganizationPlatformId": "D0118E18D61448FEA4B811760FACCBC6",
+      "timeZone": "UTC"
+    },
+    {
+      "fleetOrganizationPlatformId": "FD35359178494609B670DAF80BF79A14",
+      "timeZone": "Europe/Stockholm"
+    }
+  ],
+  "dataItems": {
+    "cargoTemperature3Alarm": {
+      "booleanValue": false,
+      "_c": 5
+    },
+    "fuelLevel": {
+      "percent": 52.3,
+      "_c": 18
+    },
+    "vehicleRearAxleWeight": {
+      "kilos": 1000,
+      "_c": 10
+    },
+    "trailerTotalWeight": {
+      "kilos": 10000,
+      "_c": 10
+    },
+    "trailerRearAxleWeight": {
+      "kilos": 1000,
+      "_c": 10
+    },
+    "adBlueLevel": {
+      "percent": 81.9,
+      "_c": 18
+    },
+    "driverActivity": {
+      "values": {
+        "driverActivity": {
+          "state": "driving",
+          "_c": 24
+        }
+      },
+      "_c": 3
+    },
+    "speed": {
+      "kilometersPerHour": 84,
+      "_c": 9
+    },
+    "vehicleFrontAxleWeight": {
+      "kilos": 1000,
+      "_c": 10
+    },
+    "driverActivityTimes": {
+      "values": {
+        "date": {
+          "incomingTimestampValue": 0,
+          "_c": 26
+        },
+        "restingTime": {
+          "seconds": 6600,
+          "_c": 23
+        },
+        "drivingTime": {
+          "seconds": 19080,
+          "_c": 23
+        },
+        "waitingTime": {
+          "seconds": 0,
+          "_c": 23
+        },
+        "workingTime": {
+          "seconds": 3660,
+          "_c": 23
+        }
+      },
+      "_c": 3
+    },
+    "cargoTemperature2Alarm": {
+      "booleanValue": false,
+      "_c": 5
+    },
+    "totalFuelLevel": {
+      "values": {
+        "diesel": {
+          "percent": 52.3,
+          "_c": 18
+        },
+        "lng": {
+          "percent": 41.9,
+          "_c": 18
+        }
+      },
+      "_c": 3
+    },
+    "navigationDestination": {
+      "values": {
+        "distanceToDestination": {
+          "meters": "77770",
+          "_c": 15
+        },
+        "eta": {
+          "seconds": 8888,
+          "_c": 23
+        },
+        "destinationLatitude": {
+          "latitude": "57.81076",
+          "_c": 12
+        },
+        "destinationLongitude": {
+          "longitude": "11.98227",
+          "_c": 14
+        }
+      },
+      "_c": 3
+    },
+    "totalConsumption": {
+      "values": {
+        "diesel": {
+          "liters": 73854.13,
+          "_c": 13
+        },
+        "lng": {
+          "kilos": 98386.15,
+          "_c": 10
+        }
+      },
+      "_c": 3
+    },
+    "lovVehicleDistance": {
+      "meters": "491973410",
+      "_c": 15
+    },
+    "vehicleTotalWeight": {
+      "kilos": 1000,
+      "_c": 10
+    },
+    "trailerFrontAxleWeight": {
+      "kilos": 1000,
+      "_c": 10
+    },
+    "cargoDefrostStatus": {
+      "booleanValue": false,
+      "_c": 5
+    },
+    "totalAdBlueUsed": {
+      "liters": 738541.39,
+      "_c": 13
+    },
+    "cargoTemperature4": {
+      "temperatureInCelcius": 4,
+      "_c": 2
+    },
+    "cargoTemperature1Alarm": {
+      "booleanValue": false,
+      "_c": 5
+    },
+    "cargoTemperature2": {
+      "temperatureInCelcius": 2,
+      "_c": 2
+    },
+    "driverId": {
+      "driverIdNumber": "1111222233334444",
+      "driverIdMethod": "DIGITAL",
+      "driverAuthenticationEquipment": "driver_card",
+      "driverIdAuthCountry": "S",
+      "_c": 7
+    },
+    "cargoDoorStatus": {
+      "booleanValue": false,
+      "_c": 5
+    },
+    "cargoTemperature3": {
+      "temperatureInCelcius": 3,
+      "_c": 2
+    },
+    "cargoTemperature1": {
+      "temperatureInCelcius": 1,
+      "_c": 2
+    },
+    "position": {
+      "latitude": {
+        "latitude": "57.724185"
+      },
+      "longitude": {
+        "longitude": "11.768441"
+      },
+      "heading": 29,
+      "altitude": 24,
+      "gpsTimestamp": 1558444015000,
+      "_c": 20
+    },
+    "cargoTemperature4Alarm": {
+      "booleanValue": false,
+      "_c": 5
+    }
+  },
+  "trackingTime": 1558444015673,
+  "triggerTime": 1602598179400,
+  "triggerType": "DRIVER_ACTIVITY_CHANGE",
+  "triggerData": {
+    "values": {
+      "duration": {
+        "seconds": 55,
+        "timestamp": 1569287980000,
+        "lastChangeTimestamp": 1569287980000,
+        "_c": 23
+      },
+      "driverActivityStopTime": {
+        "incomingTimestampValue": 1569287980000,
+        "timestamp": 1569287980000,
+        "lastChangeTimestamp": 1569287980000,
+        "_c": 26
+      },
+      "lastActivity": {
+        "state": "driving",
+        "timestamp": 1569287980000,
+        "lastChangeTimestamp": 1569287980000,
+        "_c": 24
+      }
+    },
+    "name": "driverActivity",
+    "timestamp": 1569287980000,
+    "lastChangeTimestamp": 1569287980000,
+    "_c": 3
+  },
+  "dataContentName": "TRACKING_V2",
+  "expireAt":  "2021-01-08T12:47:27.653Z",
+  "version": 0,
+  "_c": 28
+}

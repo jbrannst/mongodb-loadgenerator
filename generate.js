@@ -2,13 +2,14 @@ const mongoProvider = require('./mongoProvider');
 const trajectoryLogger = require('./trajectoryLogger');
 const getSmallObject = require('./objectProvider').getSmallObject;
 const getBigObject = require('./objectProvider').getBigObject;
+const getUsingTemplate = require('./objectProvider').getUsingTemplate;
 const _ = require('lodash');
 
-const msPerYear = 31536000000;
-const batchSize = 1000;
+const msPerYear = 365 * 24 * 60 * 60 * 1000;
+const batchSize = 10000;
 async function generateCollection(size, collectionName, objGenerator, withTrajectoryLog) {
     seedDate = new Date();
-    seedDate.setMilliseconds(seedDate.getMilliseconds() - msPerYear);
+    seedDate.setMilliseconds(seedDate.getMilliseconds() - msPerYear); //start 1 yr back
     dateStepMs = msPerYear / size;
     let i = 0;
     startup_timer = new Date();
@@ -122,6 +123,6 @@ module.exports.generateStandardCollectionsForBigObj = async function() {
 
     //await mongoProvider.drop('bigObj100k5indexes');
     //await mongoProvider.createIndexes(indexSet1, 'readings');
-    await generateCollection(1000000, 'readings', getBigObject, false);
+    await generateCollection(20000000, 'readings', getUsingTemplate, false);
 
 }

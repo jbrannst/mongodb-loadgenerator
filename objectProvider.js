@@ -1,4 +1,6 @@
 const faker = require('faker')
+const fs = require('fs')
+const crypto = require('crypto')
 
 function getSmallObject() {
     return {
@@ -40,4 +42,36 @@ function getBigObject(date) {
 }
 
 module.exports.getBigObject = getBigObject;
+
+const fleetIds = new Array(1000).fill(null)
+.map(e => get32Hex())
+
+const vehicleIds = new Array(300000).fill(null)
+.map(e => get32Hex())
+
+var templateFile = "ex.json"
+var json = null
+
+function get32Hex(){
+    return crypto.randomBytes(16).toString('hex').toUpperCase();
+}
+
+function getUsingTemplate(date){
+    if (json === null) {
+        let file = fs.readFileSync(templateFile)
+        json = JSON.parse(file)
+    }
+    let object = Object.assign({}, json)
+    object._id = null
+    object.platformVehicleIdentifier = vehicleIds[faker.random.number({min: 0, max: 299999})]
+    let fleetID = new Array(faker.random.number({min: 1, max: 2})).fill(null)
+        .map(e => fleetIds[faker.random.number({min: 0, max: 999})])
+    object.platformFleetOrganizationIdentifiers = fleetID
+    object.labels = fleetID
+    object.trackingTime = date.getTime()
+    object.triggerTime = date.getTime()
+    object.triggerDate = date
+    return object
+}
+module.exports.getUsingTemplate = getUsingTemplate;
 
